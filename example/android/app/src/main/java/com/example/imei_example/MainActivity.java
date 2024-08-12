@@ -1,4 +1,4 @@
-package co.creativemind.device_information_example;
+package com.example.imei_example;
 
 import io.flutter.embedding.android.FlutterActivity;
 
