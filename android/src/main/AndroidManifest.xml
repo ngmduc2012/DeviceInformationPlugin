@@ -1,3 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="co.creativemind.device_information">
+  package="com.example.device_information.device_information">
 </manifest>

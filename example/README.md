@@ -1,6 +1,6 @@
-# imei_example
+# device_information_example
 
-Demonstrates how to use the imei plugin.
+Demonstrates how to use the device_information plugin.
 
 ## Getting Started
 
