@@ -1,56 +1,97 @@
-# Device Information
+[![codecov](https://codecov.io/gh/Hina-Hussain/DeviceInformationPlugin/branch/main/graph/badge.svg)](https://codecov.io/gh/Hina-Hussain/DeviceInformationPlugin)
+[![GitHub](https://img.shields.io/badge/Hina_Hussain-GitHub-black?logo=github)](https://github.com/Hina-Hussain)
 
-A flutter plugin to get device information such as device IMEI number, model name, API level,CPU Type,Product Name etc for both android & iOS.
+`device_information` is a Flutter plugin that returns device info such as IMEI (Android), model, manufacturer, API level, CPU type, product name, and hardware for Android and iOS.
+
+## Features
+
+- Simple static API for common device fields.
+- Works on Android and iOS.
+- Optional IMEI on Android with runtime permission.
 
 ## Installation
 
-Add following dependency in pubspec.yaml file:
+Add the following to your `pubspec.yaml`:
 
-```bash
-device_information:^0.0.4
+```yaml
+dependencies:
+  device_information: ^0.0.5
 ```
+
 Install by running:
 
-```bash
-$ flutter pub get 
+```sh
+flutter pub get
 ```
 
-## Usage
+## Quick start
 
-```
+```dart
 import 'package:device_information/device_information.dart';
+import 'package:flutter/services.dart';
 
-try {
-      platformVersion = await DeviceInformation.platformVersion;
-      imeiNo = await DeviceInformation.deviceIMEINumber;
-      modelName = await DeviceInformation.deviceModel;
-      manufacturer = await DeviceInformation.deviceManufacturer;
-      apiLevel =  await DeviceInformation.apiLevel;
-      deviceName = await DeviceInformation.deviceName;
-      productName = await DeviceInformation.productName;
-      cpuType = await DeviceInformation.cpuName;
-      hardware = await DeviceInformation.hardware;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
+Future<void> loadDeviceInfo() async {
+  try {
+    final platformVersion = await DeviceInformation.platformVersion;
+    final imeiNo = await DeviceInformation.deviceIMEINumber;
+    final modelName = await DeviceInformation.deviceModel;
+    final manufacturer = await DeviceInformation.deviceManufacturer;
+    final apiLevel = await DeviceInformation.apiLevel;
+    final deviceName = await DeviceInformation.deviceName;
+    final productName = await DeviceInformation.productName;
+    final cpuType = await DeviceInformation.cpuName;
+    final hardware = await DeviceInformation.hardware;
+  } on PlatformException {
+    // Handle errors here.
+  }
+}
 ```
-In android add the following permission:
-```
+
+## Android permission
+
+Add the permission to `android/app/src/main/AndroidManifest.xml`:
+
+```xml
 <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 ```
-Then for API targetting from Marshmallow, need to request runtime permissions.
-Although in iOS there is no need to specify permissions.
 
-## Contributing
+For API 23+, request runtime permission in your app. IMEI access may be restricted depending on Android version and device policy.
+
+## iOS notes
+
+No additional permission is required on iOS. Some fields may be empty depending on OS restrictions.
+
+## API list
+
+- `DeviceInformation.platformVersion`
+- `DeviceInformation.deviceIMEINumber`
+- `DeviceInformation.deviceModel`
+- `DeviceInformation.deviceManufacturer`
+- `DeviceInformation.apiLevel`
+- `DeviceInformation.deviceName`
+- `DeviceInformation.productName`
+- `DeviceInformation.cpuName`
+- `DeviceInformation.hardware`
+
+## Docs
+
+- Usage guide: `doc/USAGE.md`
+- Operations: `doc/OPERATIONS.md`
+- Example app: `example/`
+
+## Contribution
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## Developer Team:
-Hina Hussain & her team members (Kamran Khan, Abdul Sattar, Faiza Farooqui) :smile: :tada:
+## Developer Team
+
+Hina Hussain and her team members (Kamran Khan, Abdul Sattar, Faiza Farooqui).
 
 ## Follow me
+
 https://hina-hussain-developer.medium.com/creating-publisher-account-on-the-pub-dev-cf86b91cd2f
 https://hinahussaindev.blogspot.com/2021/05/creating-publisher-account-on-pubdev.html
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
 
+[MIT](https://choosealicense.com/licenses/mit/)

@@ -7,5 +7,9 @@
 ## 0.0.3
 * Stable, null-safe release.
 
+## 0.0.5
+* Add coverage workflow and Makefile helpers.
+* Improve tests and documentation structure.
+
 ## 0.0.4
 * Bug Fixes.
